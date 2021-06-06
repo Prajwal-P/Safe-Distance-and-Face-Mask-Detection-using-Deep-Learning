@@ -10,7 +10,7 @@ To implement a system that provides quick and efficient results on whether peopl
 3. Make changes in your branch, commit and push them.
 4. Create a Pull Request from your branch to main branch. If any two members of our team approves your changes you are free to merge the changes with main branch.
 
-NOTE: If there are any comments in your pull request, please resolve them before merging.
+NOTE: If there are any comments in your pull request, please resolve them before merging. Also consider changing notification setting for this repo to watch all changes to follow all changes done.
 
 ---
 
