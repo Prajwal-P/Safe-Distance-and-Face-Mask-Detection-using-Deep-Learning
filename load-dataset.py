@@ -1,4 +1,4 @@
-# Prerequisits: 1)install sklearn,tensorflow,imutils,numpy,kaggle,pillow packages.
+# Prerequisits: 1)download required packages mentioned in requirements.txt
 # 2) Setup kaggle using the link https://adityashrm21.github.io/Setting-Up-Kaggle/
 from sklearn.preprocessing import LabelBinarizer
 from tensorflow.keras.preprocessing.image import img_to_array
@@ -11,8 +11,12 @@ import os
 import kaggle
 
 def load():
-    
-    if not os.path.isdir('C:/Users/user/Documents/GitHub/Safe-Distance-and-Face-Mask-Detection-using-Deep-Learning/dataset'):
+    path='C:/Users/user/Documents/GitHub/Safe-Distance-and-Face-Mask-Detection-using-Deep-Learning/dataset'
+    #give the above path relative to dataset folder in your system i.e. this is the path where already downloaded dataset exists in my system.
+
+    # if the image dataset is not already available in the above mentioned path,
+    # the dataset from kaggle will be downloaded using below 4 lines of code.
+    if not os.path.isdir(path):
         print("[INFO] Downloading dataset from kaggle....")
         kaggle.api.authenticate()
         kaggle.api.dataset_download_files('shantanu1118/face-mask-detection-dataset-with-4k-samples', path='dataset', unzip=True)
@@ -47,4 +51,3 @@ def load():
     labels = to_categorical(labels)  # converts 1-D vector to 2-D matrix
 
     return data,labels
-
