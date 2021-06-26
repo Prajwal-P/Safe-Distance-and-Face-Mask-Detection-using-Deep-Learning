@@ -1,0 +1,8 @@
+# Dataset folder
+dataset/
+
+# Python cache files
+__pycache__/
+
+# YOLOv3 weights
+yolov3.weights
