@@ -4,7 +4,6 @@ from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.utils import to_categorical
-from imutils import paths
 from modules.config import PATH, DATASET_IDENTIFIER
 import numpy as np
 import os
@@ -23,11 +22,10 @@ def load_dataset():
     # grab the list of images in our dataset directory, then initialize
     # the list of data (i.e., images) and class images
     print("[INFO] loading images...")
-    imagePaths = list(paths.list_images(PATH['DATASET']))
     data = []
     labels = []
-    # loop over the image paths
-    for imagePath in imagePaths:
+    # loop over the images
+    for imagePath in os.listdir(PATH['DATASET']):
         # extract the class label from the filename
         label = imagePath.split(os.path.sep)[-2]
 
