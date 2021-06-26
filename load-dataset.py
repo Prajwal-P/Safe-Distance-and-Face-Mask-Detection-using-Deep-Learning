@@ -10,7 +10,7 @@ import os
 import kaggle
 
 
-def load():
+def load_dataset():
     path = './dataset'
     # give the above path relative to dataset folder in your system i.e. this is the path where already downloaded dataset exists in my system.
 
@@ -56,4 +56,4 @@ def load():
 
 
 if __name__ == "__main__":
-    load()
+    load_dataset()
