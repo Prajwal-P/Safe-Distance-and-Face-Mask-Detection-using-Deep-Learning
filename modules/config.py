@@ -11,4 +11,17 @@ USE_GPU = True
 DETECTION_THRESHOLD = 0.6
 
 NMS_THRESHOLD = 0.52
+
+# Kaggle dataset identifier
+DATASET_IDENTIFIER = 'shantanu1118/face-mask-detection-dataset-with-4k-samples'
+
+# Different paths used:
+PATH = {
+    'DATASET': './dataset',
+    'YOLO_LABELS': './yolo-coco/coco.names',
+    'YOLO_WEIGHTS': './yolo-coco/yolov3.weights',
+    'YOLO_CONFIG': './yolo-coco/yolov3.cfg',
+    'SAMPLE_DATASET': './sample_dataset'
+}
+
 # ===============================================================================

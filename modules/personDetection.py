@@ -1,5 +1,5 @@
 # import the necessary packages
-from .config import NMS_THRESHOLD, DETECTION_THRESHOLD, PEOPLE_COUNTER
+from .config import NMS_THRESHOLD, DETECTION_THRESHOLD, PEOPLE_COUNTER, PATH
 import numpy as np
 import cv2
 import time
@@ -51,8 +51,8 @@ def detect_people(frame, net, ln, personIdx=0):
                 box = detection[0:4] * np.array([W, H, W, H])
                 (centerX, centerY, width, height) = box.astype("int")
 
-                # use the center (x, y)-coordinates to derive the top
-                # and and left corner of the bounding box
+                # use the center (x, y)-coordinates to derive
+                # the top left corner of the bounding box
                 x = int(centerX - (width / 2))
                 y = int(centerY - (height / 2))
 
@@ -92,20 +92,17 @@ def detect_people(frame, net, ln, personIdx=0):
 
 
 if __name__ == "__main__":
-    labelsPath = "./yolo-coco/coco.names"
-    LABELS = open(labelsPath).read().strip().split("\n")
-
-    weightsPath = "./yolo-coco/yolov3.weights"
-    configPath = "./yolo-coco/yolov3.cfg"
-    net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
+    LABELS = open(PATH['YOLO_LABELS']).read().strip().split("\n")
+    net = cv2.dnn.readNetFromDarknet(PATH['YOLO_CONFIG'], PATH['YOLO_WEIGHTS'])
 
     ln = net.getLayerNames()
     ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
     # # sample image path
     # imgpath = './sample_dataset/1.jpg'
-    for path in os.listdir('./sample_dataset'):  # loop to read one image at a time
-        imgpath = os.path.join('./sample_dataset', path)
+    # loop to read one image at a time
+    for path in os.listdir(PATH['SAMPLE_DATASET']):
+        imgpath = os.path.join(PATH['SAMPLE_DATASET'], path)
         image = cv2.imread(imgpath)
         image = cv2.resize(image, (720, 640))
 
@@ -117,8 +114,10 @@ if __name__ == "__main__":
             # extract the bounding box
             (startX, startY, endX, endY) = bbox
 
-            # draw (1) a bounding box around the person and (2) the
-            # centroid coordinates of the person,
+            # Draw:
+            # (1) a bounding box around the person,
+            # (3) write confidence score and
+            # (2) centroid coordinates of the person
             cv2.rectangle(image, (startX, startY),
                           (endX, endY), (0, 255, 255), 2)
             confidence = '{: .2f}%'.format(prob * 100)
@@ -127,7 +126,7 @@ if __name__ == "__main__":
             cv2.circle(image, centroid, 1, (0, 0, 255), 2)
         cv2.imshow('image', image)
 
-        # pauses for 3 seconds before fetching next image
+        # pauses for 2 seconds before fetching next image
         key = cv2.waitKey(2000)
         if key == 27:  # if ESC is pressed, exit loop
             cv2.destroyAllWindows()
