@@ -44,6 +44,8 @@ To implement a system that provides quick and efficient results on whether peopl
     > To install all packages from requirements file in linux terminal.
 3. `FOR /F "delims=~" %f in (requirements.txt) DO conda install --yes "%f" || pip install "%f"`
     > To install all packages from requirements file in windows.
+4. `python -m modules.<filename>`
+    > to run a module from 'modules' folder.
 
 ---
 ## References
