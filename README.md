@@ -42,6 +42,8 @@ To implement a system that provides quick and efficient results on whether peopl
     > To create conda environment and install packages.
 2. `https://pjreddie.com/media/files/yolov3.weights`
     > Use the above link to download YOLOv3 weights.
+3. `python -m modules.<filename>`
+    > to run a module from 'modules' folder.
 
 ---
 ## References
