@@ -46,6 +46,8 @@ To implement a system that provides quick and efficient results on whether peopl
     > To install all packages from requirements file in windows.
 4. `python -m modules.<filename>`
     > to run a module from 'modules' folder.
+5. `https://drive.google.com/file/d/1MILq56BADd3Tj173HekMm6aycLx9gruk/view?usp=sharing`
+    > Use the above link to download YOLOv3 weights.
 
 ---
 ## References
