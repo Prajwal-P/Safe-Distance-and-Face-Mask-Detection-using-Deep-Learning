@@ -17,11 +17,11 @@ def detect_people(frame, net, ln, personIdx=0):
     # and associated probabilities
     blob = cv2.dnn.blobFromImage(frame, 1 / 255.0, (416, 416),
                                  swapRB=True, crop=False)
-    start = time.time()
     net.setInput(blob)
-    end = time.time()
-    print("Time taken to predict the image: {:.6f}seconds".format(end-start))
+    start = time.time()
     layerOutputs = net.forward(ln)
+    end = time.time()
+    print("Time taken to detect people: {:.6f}seconds".format(end-start))
 
     # initialize our lists of detected bounding boxes, centroids, and
     # confidences, respectively
