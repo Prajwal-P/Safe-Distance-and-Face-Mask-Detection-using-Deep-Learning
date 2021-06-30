@@ -116,8 +116,8 @@ if __name__ == "__main__":
 
             # Draw:
             # (1) a bounding box around the person,
-            # (3) write confidence score and
-            # (2) centroid coordinates of the person
+            # (2) write confidence score and
+            # (3) centroid coordinates of the person
             cv2.rectangle(image, (startX, startY),
                           (endX, endY), (0, 255, 255), 2)
             confidence = '{: .2f}%'.format(prob * 100)
