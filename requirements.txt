@@ -1,9 +1,11 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> -c conda-forge --file <this file>
 pip
 autopep8
 imutils
 kaggle
 numpy
-opencv-python
+opencv
 pillow
-sklearn
+scikit-learn
 tensorflow

@@ -38,12 +38,8 @@ To implement a system that provides quick and efficient results on whether peopl
 
 ---
 ### Important commands
-1. `conda create -n <env>`
-    > To create conda environment.
-2. `while read requirement; do conda install --yes $requirement || pip install $requirement; done < requirements.txt`
-    > To install all packages from requirements file in linux terminal.
-3. `FOR /F "delims=~" %f in (requirements.txt) DO conda install --yes "%f" || pip install "%f"`
-    > To install all packages from requirements file in windows.
+1. `conda create --name <env> -c conda-forge --file <this file>`
+    > To create conda environment and install packages.
 
 ---
 ## References
