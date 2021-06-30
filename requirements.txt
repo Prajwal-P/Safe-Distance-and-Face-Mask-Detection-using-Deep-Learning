@@ -1,5 +1,5 @@
 # This file may be used to create an environment using:
-# $ conda create --name <env> -c conda-forge --file <this file>
+# $ conda create --name <env> -c conda-forge --file requirements.txt
 pip
 autopep8
 imutils

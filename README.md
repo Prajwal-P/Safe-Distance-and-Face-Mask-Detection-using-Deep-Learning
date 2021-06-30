@@ -38,7 +38,7 @@ To implement a system that provides quick and efficient results on whether peopl
 
 ---
 ### Important commands
-1. `conda create --name <env> -c conda-forge --file <this file>`
+1. `conda create --name <env> -c conda-forge --file requirements.txt`
     > To create conda environment and install packages.
 
 ---
