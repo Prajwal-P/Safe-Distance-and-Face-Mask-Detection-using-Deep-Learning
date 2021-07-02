@@ -2,7 +2,6 @@
 # $ conda create --name <env> -c conda-forge --file requirements.txt
 pip
 autopep8
-imutils
 kaggle
 numpy
 opencv
