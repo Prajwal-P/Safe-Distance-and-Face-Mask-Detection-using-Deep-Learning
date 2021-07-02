@@ -1,5 +1,4 @@
-# Prerequisits: 1)download required packages mentioned in requirements.txt
-# 2) Setup kaggle using the link https://adityashrm21.github.io/Setting-Up-Kaggle/
+# Setup kaggle using the link https://adityashrm21.github.io/Setting-Up-Kaggle/
 from sklearn.preprocessing import LabelBinarizer
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.preprocessing.image import load_img
@@ -10,14 +9,18 @@ import numpy as np
 import os
 import kaggle
 
-def load():
-    path='./dataset'
-    #give the above path relative to dataset folder in your system i.e. this is the path where already downloaded dataset exists in my system.
+
+def load_dataset():
+    path = './dataset'
+    # give the above path relative to dataset folder in your system i.e. this is the path where already downloaded dataset exists in my system.
 
     # if the image dataset is not already available in the above mentioned path,
     # the dataset from kaggle will be downloaded using below 4 lines of code.
     if not os.path.isdir(path):
         print("[INFO] Downloading dataset from kaggle....")
+        kaggle.api.authenticate()
+        kaggle.api.dataset_download_files(
+            'shantanu1118/face-mask-detection-dataset-with-4k-samples', path='dataset', unzip=True)
 
     # grab the list of images in our dataset directory, then initialize
     # the list of data (i.e., images) and class images
@@ -33,7 +36,8 @@ def load():
         # load the input image (224x224) and preprocess it
         image = load_img(imagePath, target_size=(224, 224))
         image = img_to_array(image)
-        image = preprocess_input(image)  # converts pixel values between -1 to 1
+        # converts pixel values between -1 to 1
+        image = preprocess_input(image)
 
         # update the data and labels lists, respectively
         data.append(image)
@@ -48,4 +52,8 @@ def load():
     labels = lb.fit_transform(labels)
     labels = to_categorical(labels)  # converts 1-D vector to 2-D matrix
 
-    return data,labels
+    return data, labels
+
+
+if __name__ == "__main__":
+    load_dataset()
