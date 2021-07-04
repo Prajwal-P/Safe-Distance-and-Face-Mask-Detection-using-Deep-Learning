@@ -4,32 +4,28 @@ from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.utils import to_categorical
-from imutils import paths
+from modules.config import PATH, DATASET_IDENTIFIER
 import numpy as np
 import os
 import kaggle
 
 
 def load_dataset():
-    path = './dataset'
-    # give the above path relative to dataset folder in your system i.e. this is the path where already downloaded dataset exists in my system.
-
     # if the image dataset is not already available in the above mentioned path,
     # the dataset from kaggle will be downloaded using below 4 lines of code.
-    if not os.path.isdir(path):
+    if not os.path.isdir(PATH['DATASET']):
         print("[INFO] Downloading dataset from kaggle....")
         kaggle.api.authenticate()
         kaggle.api.dataset_download_files(
-            'shantanu1118/face-mask-detection-dataset-with-4k-samples', path='dataset', unzip=True)
+            DATASET_IDENTIFIER, path='dataset', unzip=True)
 
     # grab the list of images in our dataset directory, then initialize
     # the list of data (i.e., images) and class images
     print("[INFO] loading images...")
-    imagePaths = list(paths.list_images('./dataset'))
     data = []
     labels = []
-    # loop over the image paths
-    for imagePath in imagePaths:
+    # loop over the images
+    for imagePath in os.listdir(PATH['DATASET']):
         # extract the class label from the filename
         label = imagePath.split(os.path.sep)[-2]
 
